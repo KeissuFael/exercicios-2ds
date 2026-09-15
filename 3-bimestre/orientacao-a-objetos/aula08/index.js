@@ -14,3 +14,10 @@ class Cofre {
         }
     }
 }
+const cofre = new Cofre("1234")
+
+cofre.verificarCodigo("9999")
+cofre.verificarCodigo("0000")
+cofre.verificarCodigo("1234")
+
+module.exports = cofre
