@@ -209,3 +209,9 @@ Para cada situação, indique qual reunião seria mais adequada:
 2. Um desenvolvedor quer informar que está bloqueado por um problema.
 3. A equipe terminou uma Sprint e precisa apresentar o que desenvolveu.
 4. A equipe percebeu que houve problemas de comunicação durante a Sprint e quer descobrir como melhorar.
+
+Respostas
+1. Planning
+2. Daily
+3. Review
+4. Retrospectiva
