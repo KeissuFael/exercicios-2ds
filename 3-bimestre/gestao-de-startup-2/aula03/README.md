@@ -195,3 +195,8 @@ Antes de desenvolver qualquer coisa, responda:
 1. Qual seria a primeira coisa que a equipe deveria descobrir?
 2. Cite duas perguntas que poderiam ser feitas aos alunos.
 3. Por que não é recomendado começar desenvolvendo o aplicativo imediatamente?
+
+Respostas
+1.Quais problemas de comunicação estão ocorrendo e como eles poderiam resolve-los
+2."Você possui uma comunicação boa com outros colegas?" "Que tipo de problemas ocorrem, que dificultam sua comunicação?"
+3. Porque antes de iniciar a criação do aplicativo, precisam possuir uma base para não iniciar sem uma base
