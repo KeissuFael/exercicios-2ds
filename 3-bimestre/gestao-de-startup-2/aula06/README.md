@@ -242,3 +242,8 @@ A equipe consegue realizar apenas **três tarefas** nesta Sprint.
 1. Quais três tarefas você escolheria?
 2. Por que elas devem ter prioridade?
 3. Qual seria um possível objetivo para essa Sprint?
+
+Respostas
+1. Opções:E, A, C
+2. Porque elas causam erros que podem prejudicar a experiência dos usuários
+3. Corrigir erros que podem causar erros para os usuários
