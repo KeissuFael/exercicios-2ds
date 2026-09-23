@@ -1,0 +1,9 @@
+const Paciente = require("../class/Paciente")
+
+class Gato extends Paciente {
+    descricao() {
+        return `Consulta de gato registrada`
+    }
+}
+
+module.exports = Gato
