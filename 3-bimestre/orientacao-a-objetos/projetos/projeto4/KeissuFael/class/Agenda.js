@@ -16,3 +16,5 @@ class Agenda {
         this.membros.push(membro)
     }
 }
+
+module.exports = Agenda

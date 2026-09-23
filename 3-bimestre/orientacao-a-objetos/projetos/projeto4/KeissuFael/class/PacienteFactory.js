@@ -5,19 +5,20 @@ const Roedor = require("../class/Roedor")
 
 class Factory {
     static criar(tipo, nome, idade) {
-        if(tipo === "Cachorro") {
+        if(tipo === "cachorro") {
             return new Cachorro(nome, idade)
         } 
-        if(tipo === "Gato") {
+        if(tipo === "gato") {
             return new Gato(nome, idade)
         }
-        if(tipo === "AveExotica") {
+        if(tipo === "ave") {
             return new AveExotica(nome, idade)
         }
-        if(tipo === "Roedor") {
+        if(tipo === "roedor") {
             return new Roedor(nome, idade)
         }
-        throw new error(`Tipo de paciente inválido`)
+
+        throw new Error("Tipo de paciente inválido")
         
     }
 }
