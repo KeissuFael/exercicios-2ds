@@ -221,3 +221,8 @@ Crie:
 1. Uma tarefa que será dada ao usuário.
 2. Duas coisas que a equipe deverá observar.
 3. Uma pergunta para fazer depois do teste.
+
+Respostas
+1. Buscar por erros ou por incoerências no protótipo
+2. Como podem melhorar para agradar os usuários, e como podem fazer isso de forma rápida e funcional
+3. Se o protótipo agradou o usuário, e quais problemas ele sugeriria que fossem melhorados
