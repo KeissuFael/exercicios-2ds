@@ -206,3 +206,8 @@ Responda:
 1. Você simplesmente implementaria os cinco campos?
 2. O que deveria fazer antes?
 3. Como poderia apresentar sua preocupação à equipe?
+
+Respostas
+1.Sim
+2.Iria sugerir a falta de necessidade desses 5 campos
+3.Como uma sugestão, sem impor a ideia, mas tentando convencer os outros membros que sería uma melhoría
