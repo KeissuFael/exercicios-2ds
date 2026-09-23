@@ -151,3 +151,8 @@ Responda:
 1. Qual foi o problema identificado?
 2. Em que momento ocorreu o planejamento?
 3. Por que os testes foram importantes antes do lançamento?
+
+Respostas
+1. Os alunos esquecerem trabalhos escolares
+2. após a conversa com os estudantes
+3. Para descobrir se haviam erros ou problemas para resolver
