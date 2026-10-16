@@ -1,18 +1,18 @@
 const projeto = {
     nome: "aula01",
-    script: ["test", "start", "dev"]
-}
+    scripts: ["test", "start", "dev"],
 
-function rodar() {
-    return `Executando: npm run ${projeto.script}`
-}
+    rodar() {
+    return `Executando: npm run ${projeto.scripts[2]}`
+    },
 
-function temScript(script) {
-    if(temScript) {
+    temScript(script) {
+    if(script === "test" || script === "start" || script === "dev") {
         return true
     } else {
         return false
     }
+}
 }
 
 module.exports = projeto
