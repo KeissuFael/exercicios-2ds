@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f3ec">
+    <title>BiblioTech — Pesquisa de recomendação</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #202a25;
+        --muted: #69746d;
+        --paper: #f5f3ec;
+        --card: #fffefa;
+        --green: #245a43;
+        --green-light: #e7efe8;
+        --line: #e7e5dc;
+        --orange: #d98245;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 32px 20px;
+        background:
+          radial-gradient(ellipse at 12% 4%, #e8ecdf 0, transparent 34%),
+          var(--paper);
+        color: var(--ink);
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(100%, 760px);
+        margin: 0 auto;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 24px 4px;
+        color: var(--green);
+        font-size: 14px;
+        font-weight: 750;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 12px;
+        background: var(--green);
+        color: white;
+        font-size: 21px;
+        letter-spacing: 0;
+      }
+
+      .card {
+        overflow: hidden;
+        border: 1px solid rgba(32, 42, 37, 0.07);
+        border-radius: 24px;
+        background: var(--card);
+        box-shadow: 0 20px 60px rgba(40, 48, 40, 0.08);
+      }
+
+      .intro {
+        padding: clamp(28px, 7vw, 52px);
+      }
+
+      .eyebrow {
+        margin: 0 0 13px;
+        color: var(--orange);
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: clamp(36px, 8vw, 58px);
+        font-weight: 500;
+        letter-spacing: -0.045em;
+        line-height: 1.04;
+      }
+
+      .description {
+        max-width: 540px;
+        margin: 18px 0 32px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.65;
+      }
+
+      .question {
+        margin: 0 0 15px;
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      .scale {
+        display: grid;
+        grid-template-columns: repeat(11, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .score-button {
+        display: grid;
+        min-width: 0;
+        min-height: 48px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: white;
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 700;
+        transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+      }
+
+      .score-button:hover {
+        transform: translateY(-2px);
+        border-color: var(--green);
+        background: var(--green-light);
+      }
+
+      .score-button:focus-visible,
+      .reset-button:focus-visible {
+        outline: 3px solid var(--orange);
+        outline-offset: 3px;
+      }
+
+      .scale-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .message {
+        min-height: 24px;
+        margin: 18px 0 0;
+        color: var(--green);
+        font-size: 14px;
+      }
+
+      .message[data-error="true"] {
+        color: #a33227;
+      }
+
+      .journey {
+        margin-top: 30px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #fbfaf5;
+      }
+
+      .journey-title {
+        margin: 0;
+        font-size: 15px;
+      }
+
+      .journey-description {
+        margin: 7px 0 15px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .journey-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+      }
+
+      .journey-button {
+        padding: 10px 14px;
+        border: 1px solid var(--green);
+        border-radius: 11px;
+        background: white;
+        color: var(--green);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .journey-button:hover {
+        background: var(--green-light);
+      }
+
+      .journey-button:focus-visible {
+        outline: 3px solid var(--orange);
+        outline-offset: 3px;
+      }
+
+      .journey-button[hidden] {
+        display: none;
+      }
+
+      .funnel-message {
+        min-height: 18px;
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .funnel-message[data-error="true"] {
+        color: #a33227;
+      }
+
+      .results {
+        padding: 28px clamp(28px, 7vw, 52px) 36px;
+        border-top: 1px solid var(--line);
+        background: #fbfaf5;
+      }
+
+      .results-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 750;
+      }
+
+      .response-count {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .funnel {
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+
+      .funnel-heading {
+        margin-bottom: 6px;
+      }
+
+      .funnel-description {
+        margin: 0 0 15px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .funnel-stages {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .funnel-stage {
+        min-width: 0;
+        padding: 12px 10px;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        background: white;
+      }
+
+      .funnel-stage.is-largest-drop {
+        border-color: #b42318;
+        background: #fff1f0;
+        color: #8f1d14;
+      }
+
+      .funnel-stage-name {
+        display: block;
+        min-height: 32px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .funnel-stage.is-largest-drop .funnel-stage-name {
+        color: #8f1d14;
+      }
+
+      .funnel-stage-count {
+        display: block;
+        margin: 6px 0 10px;
+        font-size: 24px;
+        font-weight: 750;
+        letter-spacing: -0.04em;
+      }
+
+      .funnel-stage-conversion,
+      .funnel-stage-drop {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.5;
+      }
+
+      .funnel-stage.is-largest-drop .funnel-stage-conversion,
+      .funnel-stage.is-largest-drop .funnel-stage-drop {
+        color: #8f1d14;
+        font-weight: 700;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .stat {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: white;
+      }
+
+      .stat-label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .stat-value {
+        font-size: 27px;
+        font-weight: 750;
+        letter-spacing: -0.04em;
+      }
+
+      .nps-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 14px;
+        padding: 18px 20px;
+        border-radius: 16px;
+        background: var(--green);
+        color: white;
+      }
+
+      .nps-label {
+        font-weight: 700;
+      }
+
+      .nps-formula {
+        display: block;
+        margin-top: 4px;
+        color: #d8e4db;
+        font-size: 12px;
+      }
+
+      .nps-value {
+        font-size: 36px;
+        font-weight: 750;
+        letter-spacing: -0.05em;
+      }
+
+      .reset-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 14px;
+      }
+
+      .reset-button {
+        padding: 7px 0;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 12px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      @media (max-width: 520px) {
+        body {
+          padding: 24px 14px;
+        }
+
+        .scale {
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        .score-button {
+          min-height: 44px;
+        }
+
+        .stats {
+          gap: 7px;
+        }
+
+        .funnel-stages {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .funnel-stage:last-child {
+          grid-column: 1 / -1;
+        }
+
+        .stat {
+          padding: 12px 10px;
+        }
+
+        .stat-label {
+          min-height: 30px;
+          font-size: 11px;
+        }
+
+        .stat-value {
+          font-size: 23px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <p class="brand"><span class="brand-mark" aria-hidden="true">B</span>BiblioTech</p>
+
+      <section class="card" aria-labelledby="app-title">
+        <div class="intro">
+          <p class="eyebrow">Leitura mais simples, biblioteca mais perto</p>
+          <h1 id="app-title">Sua biblioteca,<br>na palma da mão.</h1>
+          <p class="description">
+            O BiblioTech é um app de gerenciamento de cadastros de uma biblioteca,
+            feito para organizar leitores e facilitar o acesso ao universo dos livros.
+          </p>
+
+          <p class="question" id="nps-question">De 0 a 10, quanto você recomendaria este app para um amigo?</p>
+          <div class="scale" role="group" aria-labelledby="nps-question">
+            <button class="score-button" type="button" data-score="0" aria-label="Nota 0">0</button>
+            <button class="score-button" type="button" data-score="1" aria-label="Nota 1">1</button>
+            <button class="score-button" type="button" data-score="2" aria-label="Nota 2">2</button>
+            <button class="score-button" type="button" data-score="3" aria-label="Nota 3">3</button>
+            <button class="score-button" type="button" data-score="4" aria-label="Nota 4">4</button>
+            <button class="score-button" type="button" data-score="5" aria-label="Nota 5">5</button>
+            <button class="score-button" type="button" data-score="6" aria-label="Nota 6">6</button>
+            <button class="score-button" type="button" data-score="7" aria-label="Nota 7">7</button>
+            <button class="score-button" type="button" data-score="8" aria-label="Nota 8">8</button>
+            <button class="score-button" type="button" data-score="9" aria-label="Nota 9">9</button>
+            <button class="score-button" type="button" data-score="10" aria-label="Nota 10">10</button>
+          </div>
+          <div class="scale-labels" aria-hidden="true">
+            <span>0 — Não recomendaria</span>
+            <span>10 — Recomendaria muito</span>
+          </div>
+          <p class="message" id="message" role="status" aria-live="polite"></p>
+
+          <section class="journey" aria-labelledby="journey-title">
+            <h2 class="journey-title" id="journey-title">Experimente o BiblioTech</h2>
+            <p class="journey-description">Conte como você avançaria na sua jornada com o app.</p>
+            <div class="journey-actions">
+              <button class="journey-button" id="try-button" type="button">Experimentar</button>
+              <button class="journey-button" id="reuse-button" type="button" hidden>Quero usar de novo</button>
+              <button class="journey-button" id="pay-button" type="button" hidden>Eu pagaria por isso</button>
+            </div>
+            <p class="funnel-message" id="funnel-message" role="status" aria-live="polite"></p>
+          </section>
+        </div>
+
+        <section class="results" aria-labelledby="results-title">
+          <div class="results-heading">
+            <h2 id="results-title">Resultado da pesquisa</h2>
+            <span class="response-count" id="response-count">0 respostas</span>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-label">Promotores · 9–10</span>
+              <span class="stat-value" id="promoters">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Neutros · 7–8</span>
+              <span class="stat-value" id="neutrals">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Detratores · 0–6</span>
+              <span class="stat-value" id="detractors">0</span>
+            </div>
+          </div>
+          <div class="nps-row">
+            <div>
+              <span class="nps-label">NPS final</span>
+              <span class="nps-formula">% promotores − % detratores</span>
+            </div>
+            <span class="nps-value" id="nps" aria-label="NPS">—</span>
+          </div>
+          <section class="funnel" aria-labelledby="funnel-title">
+            <h2 class="funnel-heading" id="funnel-title">Funil AARRR</h2>
+            <p class="funnel-description">Visitas e avanços registrados neste navegador. Conversão e queda são calculadas em relação à etapa anterior.</p>
+            <div class="funnel-stages" id="funnel-stages" aria-live="polite"></div>
+          </section>
+          <div class="reset-row">
+            <button class="reset-button" id="reset-button" type="button">Apagar dados salvos</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const STORAGE_KEY = "bibliotech-nps-respostas";
+      const FUNNEL_STORAGE_KEY = "bibliotech-funil-aarrr";
+      const message = document.querySelector("#message");
+      const funnelMessage = document.querySelector("#funnel-message");
+      const responses = loadResponses();
+      let funnelVisits = [];
+      let currentVisit;
+      let funnelTrackingAvailable = true;
+
+      function loadFunnelVisits() {
+        const saved = localStorage.getItem(FUNNEL_STORAGE_KEY);
+        if (saved === null) return [];
+
+        const parsed = JSON.parse(saved);
+        const validVisit = (visit) => visit !== null
+          && typeof visit === "object"
+          && ["activated", "retained", "revenue", "recommended"].every(
+            (stage) => typeof visit[stage] === "boolean"
+          );
+        if (!Array.isArray(parsed) || !parsed.every(validVisit)) {
+          throw new Error("Formato de dados do funil inválido.");
+        }
+        return parsed;
+      }
+
+      try {
+        funnelVisits = loadFunnelVisits();
+        currentVisit = {
+          activated: false,
+          retained: false,
+          revenue: false,
+          recommended: false
+        };
+        funnelVisits.push(currentVisit);
+        localStorage.setItem(FUNNEL_STORAGE_KEY, JSON.stringify(funnelVisits));
+      } catch (error) {
+        funnelTrackingAvailable = false;
+        funnelMessage.textContent = "Não foi possível salvar as etapas do funil neste navegador.";
+        funnelMessage.dataset.error = "true";
+        document.querySelectorAll(".journey-button").forEach((button) => {
+          button.disabled = true;
+        });
+        console.error("Erro ao carregar ou salvar o funil do BiblioTech:", error);
+      }
+
+      function loadResponses() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved === null) return [];
+
+          const parsed = JSON.parse(saved);
+          if (!Array.isArray(parsed) || !parsed.every(
+            (score) => Number.isInteger(score) && score >= 0 && score <= 10
+          )) {
+            throw new Error("Formato de respostas inválido.");
+          }
+          return parsed;
+        } catch (error) {
+          message.textContent = "Não foi possível carregar as respostas salvas neste navegador.";
+          message.dataset.error = "true";
+          console.error("Erro ao carregar respostas do BiblioTech:", error);
+          return [];
+        }
+      }
+
+      function updateResults() {
+        const promoters = responses.filter((score) => score >= 9).length;
+        const neutrals = responses.filter((score) => score >= 7 && score <= 8).length;
+        const detractors = responses.filter((score) => score <= 6).length;
+        const total = responses.length;
+
+        document.querySelector("#promoters").textContent = promoters;
+        document.querySelector("#neutrals").textContent = neutrals;
+        document.querySelector("#detractors").textContent = detractors;
+        document.querySelector("#response-count").textContent =
+          `${total} ${total === 1 ? "resposta" : "respostas"}`;
+        document.querySelector("#nps").textContent = total
+          ? Math.round((promoters / total - detractors / total) * 100)
+          : "—";
+      }
+
+      function updateFunnel() {
+        const stages = [
+          { key: "acquisition", label: "Aquisição · visita", count: funnelVisits.length },
+          {
+            key: "activation",
+            label: "Ativação · Experimentar",
+            count: funnelVisits.filter((visit) => visit.activated).length
+          },
+          {
+            key: "retention",
+            label: "Retenção · usar de novo",
+            count: funnelVisits.filter((visit) => visit.retained).length
+          },
+          {
+            key: "revenue",
+            label: "Receita · pagaria",
+            count: funnelVisits.filter((visit) => visit.revenue).length
+          },
+          {
+            key: "recommendation",
+            label: "Recomendação · NPS 9–10",
+            count: funnelVisits.filter((visit) => visit.recommended).length
+          }
+        ];
+        let largestDropIndex = -1;
+        let largestDrop = 0;
+
+        stages.forEach((stage, index) => {
+          if (index === 0 || stages[index - 1].count === 0) return;
+          const drop = ((stages[index - 1].count - stage.count) / stages[index - 1].count) * 100;
+          if (drop > largestDrop) {
+            largestDrop = drop;
+            largestDropIndex = index;
+          }
+        });
+
+        document.querySelector("#funnel-stages").innerHTML = stages.map((stage, index) => {
+          const previousCount = index > 0 ? stages[index - 1].count : 0;
+          const conversion = index === 0 || previousCount === 0
+            ? "—"
+            : `${Math.round((stage.count / previousCount) * 100)}%`;
+          const drop = index === 0 || previousCount === 0
+            ? "—"
+            : `${Math.round(((previousCount - stage.count) / previousCount) * 100)}%`;
+          const largestDropLabel = index === largestDropIndex ? " · maior queda" : "";
+          return `
+            <div class="funnel-stage${index === largestDropIndex ? " is-largest-drop" : ""}"${index === largestDropIndex ? ' aria-label="Etapa com a maior queda percentual"' : ""}>
+              <span class="funnel-stage-name">${stage.label}${largestDropLabel}</span>
+              <span class="funnel-stage-count">${stage.count}</span>
+              <span class="funnel-stage-conversion">Conversão: ${conversion}</span>
+              <span class="funnel-stage-drop">Queda: ${drop}</span>
+            </div>
+          `;
+        }).join("");
+      }
+
+      function recordFunnelStage(stage) {
+        if (!funnelTrackingAvailable || currentVisit[stage]) return;
+
+        currentVisit[stage] = true;
+        try {
+          localStorage.setItem(FUNNEL_STORAGE_KEY, JSON.stringify(funnelVisits));
+          updateFunnel();
+          funnelMessage.textContent = "Etapa registrada neste navegador.";
+          delete funnelMessage.dataset.error;
+        } catch (error) {
+          currentVisit[stage] = false;
+          funnelMessage.textContent = "Não foi possível salvar a etapa do funil.";
+          funnelMessage.dataset.error = "true";
+          console.error("Erro ao salvar etapa do funil do BiblioTech:", error);
+        }
+      }
+
+      document.querySelector("#try-button").addEventListener("click", (event) => {
+        recordFunnelStage("activated");
+        if (currentVisit.activated) {
+          event.currentTarget.hidden = true;
+          document.querySelector("#reuse-button").hidden = false;
+        }
+      });
+
+      document.querySelector("#reuse-button").addEventListener("click", (event) => {
+        recordFunnelStage("retained");
+        if (currentVisit.retained) {
+          event.currentTarget.hidden = true;
+          document.querySelector("#pay-button").hidden = false;
+        }
+      });
+
+      document.querySelector("#pay-button").addEventListener("click", () => {
+        recordFunnelStage("revenue");
+      });
+
+      document.querySelectorAll(".score-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const score = Number(button.dataset.score);
+
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify([...responses, score]));
+            responses.push(score);
+            message.textContent = `Obrigado! Sua nota ${score} foi registrada.`;
+            delete message.dataset.error;
+            updateResults();
+            if (score >= 9) recordFunnelStage("recommended");
+          } catch (error) {
+            message.textContent = "Não foi possível salvar sua resposta. Verifique o armazenamento do navegador.";
+            message.dataset.error = "true";
+            console.error("Erro ao salvar resposta do BiblioTech:", error);
+          }
+        });
+      });
+
+      document.querySelector("#reset-button").addEventListener("click", () => {
+        if ((!responses.length && !funnelVisits.length)
+          || !window.confirm("Apagar todas as respostas e métricas salvas neste navegador?")) {
+          return;
+        }
+
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+          localStorage.removeItem(FUNNEL_STORAGE_KEY);
+          responses.length = 0;
+          funnelVisits = [];
+          currentVisit = null;
+          message.textContent = "As respostas salvas foram apagadas.";
+          delete message.dataset.error;
+          updateResults();
+          updateFunnel();
+          document.querySelectorAll(".journey-button").forEach((button) => {
+            button.disabled = true;
+          });
+          funnelMessage.textContent = "Os dados foram apagados. Recarregue a página para iniciar uma nova visita.";
+        } catch (error) {
+          message.textContent = "Não foi possível apagar as respostas salvas.";
+          message.dataset.error = "true";
+          console.error("Erro ao apagar respostas do BiblioTech:", error);
+        }
+      });
+
+      updateResults();
+      updateFunnel();
+    </script>
+  </body>
+</html>
