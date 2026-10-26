@@ -1,258 +1,353 @@
-# 📊 PROJETO 3 — PAINEL DE MÉTRICAS DO PRODUTO
+# Clean-Financy
 
-## 🎯 PROBLEMA
+## Sobre a Empresa
 
-A equipe de vocês desenvolveu um produto nos bimestres anteriores. Ele existe, tem uma proposta, tem um público.
+A Clean-Financy é um sistema de gestão financeira criado para pequenos comércios, comerciantes e micro-empresas.
 
-Mas se alguém perguntar hoje:
+A ideia nasceu de uma sprint de pesquisa em que a equipe estudou como pequenos negócios lidam com suas finanças. A partir disso, o projeto se transformou numa loja virtual que oferece acesso a um sistema desenhado para organizar o dia a dia do comércio, e não um produto físico.
 
-> "Está dando certo?"
+## Problema
 
-a resposta provavelmente será uma opinião.
+Muitos pequenos comércios têm dificuldade em organizar suas finanças, com entradas e saídas de produtos.
 
-Nas aulas 1 e 2 vimos que opinião não sustenta decisão. Uma equipe que não mede não sabe se o trabalho da semana passada melhorou ou piorou o produto — ela só acha.
+Sem controle, o comerciante não sabe com certeza quanto ganha, quanto gasta e se o negócio está realmente lucrando no final do mês.
 
-### O desafio da equipe
+A Clean-Financy quer resolver isso com um sistema simples que traz clareza sobre a situação financeira do comércio.
 
-Vocês vão montar o **painel de métricas** do produto da equipe e, com os números na mão, **tomar uma decisão coletiva** e registrá-la.
+---
 
-No final, a equipe sai com:
+## Público-Alvo
 
-- as métricas que fazem sentido para o produto (de produto **e** de código);
-- um painel com os números organizados;
-- o cálculo de NPS, retenção e churn;
-- o funil AARRR do produto, com a maior queda identificada;
-- uma decisão coletiva registrada, baseada em um número específico.
+O público-alvo inclui:
 
-> ⏱️ **Tempo:** este projeto é feito em **um dia de aula (60 minutos)**. O prazo de entrega é estendido, mas o trabalho foi dimensionado para caber em 60 a 100 minutos no total. Não é um dossiê — é um painel enxuto e uma decisão bem fundamentada.
+* Pequenos negócios
 
-# 🧰 QUAL PRODUTO USAR
+* Comerciantes autônomos
 
-### Caminho principal
+* Micro-empresas
 
-O produto que a sua equipe já desenvolveu nos bimestres anteriores.
+* Empreendedores que ainda controlam as finanças manualmente
 
-### 🅱️ Caminho alternativo
+* Donos de negócio que não têm tempo ou conhecimento técnico para sistemas complexos
 
-Se a equipe **não tem** um produto anterior — ou se o grupo foi formado neste bimestre — use um **produto de mercado que todos do grupo conheçam** (um app de música, uma rede social, um jogo, o app da escola).
+A Clean-Financy foi feita para quem precisa de algo rápido de aprender e que se encaixe na rotina de quem está sozinho no controle do negócio.
 
-Nesse caso, os números serão **estimados**, e isso não é problema: o objetivo do projeto é vocês saberem escolher, calcular e interpretar métricas. Deixem claro no painel que os dados são simulados.
+## Proposta de Valor
 
-📌 Os entregáveis e os critérios de avaliação são **exatamente os mesmos** nos dois caminhos.
+A Clean-Financy usa tecnologia moderna para facilitar e automatizar a gestão do negócio por meio de um sistema prático e fácil de usar.
 
-# 👥 ORGANIZAÇÃO DA EQUIPE
+A diferença está na simplicidade, automação e organização financeira, oferecendo ao pequeno comerciante algo que sistemas tradicionais normalmente não têm: facilidade de uso no dia a dia.
 
-Mantenham as equipes dos projetos anteriores. Sugestão de divisão para caber no tempo:
+---
 
-| Função | Responsabilidade |
-| --- | --- |
-| Métricas de produto | retenção, engajamento e NPS |
-| Métricas de código | commits, PRs, bugs, performance |
-| Painel | monta a planilha ou o quadro com os números |
-| Documentação | registra o funil e a ata da decisão |
+## Produto
 
-> As funções servem para o trabalho acontecer em paralelo. A **decisão da Etapa 5 é de todos**.
+O que está disponível é acesso ao sistema Clean-Financy, com funcionalidades como:
 
-# 📏 ETAPA 1 — ESCOLHER AS MÉTRICAS
+* Registro de entradas e saídas
 
-A equipe deve escolher **de 4 a 6 métricas** no total, sendo no mínimo:
+* Resumo do saldo do período
 
-- **3 métricas de produto** (ex.: retenção semanal, usuários ativos, NPS, ações por sessão);
-- **2 métricas de código** (ex.: commits por semana, PRs fechados, bugs abertos, tempo de resposta de uma rota).
+* Histórico de movimentações
 
-Para **cada** métrica escolhida, a equipe precisa completar esta frase (aula 1):
+* Relatórios simples de desempenho
 
-```
-Se este número piorar, a nossa equipe vai ____________.
-```
+* Lembretes financeiros
 
-⚠️ Se não for possível completar a frase, a métrica é de **vaidade** — troquem por outra.
+* Categorias personalizáveis por tipo de negócio
 
-### Exemplo
+As funcionalidades podem variar conforme o plano escolhido.
 
-| Métrica | Tipo | Se piorar, vamos... |
-| --- | --- | --- |
-| Retenção semanal | produto | revisar a tela de primeiro acesso |
-| NPS | produto | entrevistar os detratores |
-| Ações por sessão | produto | checar se a função principal está escondida |
-| Bugs abertos | código | parar features e entrar em semana de correção |
-| Commits por semana | código | investigar se alguém está travado |
+## Preço
 
-# 🧮 ETAPA 2 — CALCULAR OS NÚMEROS
+O modelo é por assinatura:
 
-A equipe deve calcular, **mostrando a conta**, pelo menos estes três:
+Plano Básico (gratuito): registro de entradas e saídas, resumo simples do saldo
 
-### 1. NPS
+Plano Pro: R$ 19,90/mês, com relatórios completos, histórico estendido e lembretes financeiros
 
-Colete **no mínimo 10 respostas** reais à pergunta "de 0 a 10, quanto você recomendaria este produto?". Pode ser com colegas da turma.
+Por exemplo, se o custo de manutenção do sistema por usuário for baixo, a maior parte da mensalidade do Plano Pro é margem para o negócio.
 
-```
-Promotores (9–10) = ___ pessoas → ___%
-Neutros (7–8)     = ___ pessoas
-Detratores (0–6)  = ___ pessoas → ___%
+Os valores são uma estimativa do projeto e podem mudar conforme a validação com comerciantes reais.
 
-NPS = ___% − ___% = ___
-```
+## Experiência — MLP
 
-### 2. Retenção
+Para transformar o sistema em um Minimum Lovable Product (MLP), foram pensados elementos focados na experiência do usuário.
 
-```
-Retenção = (usuários que voltaram ÷ usuários que começaram) × 100
-Retenção = (___ ÷ ___) × 100 = ___%
-```
+### Agilidade no registro
 
-### 3. Churn
+Poucos cliques entre abrir o sistema e registrar uma entrada ou saída.
 
-```
-Churn = (usuários que saíram ÷ usuários no início) × 100
-Churn = (___ ÷ ___) × 100 = ___%
-```
+### Painel financeiro
 
-E confiram a relação da aula 2:
+Um resumo visual simples mostrando a situação financeira do negócio no período.
 
-```
-Retenção + Churn = 100%
-```
+### Personalização por negócio
 
-📌 A conta tem que aparecer no painel. Resultado sem conta não dá para conferir nem para refazer no mês seguinte.
+O comerciante pode adaptar categorias de produto e tipo de movimentação de acordo com o seu tipo de comércio.
 
-# 🪣 ETAPA 3 — MONTAR O FUNIL AARRR
+### Confirmação de ações
 
-Desenhem o funil do produto com **um número em cada etapa** (real ou estimado):
+Mensagens claras confirmando cada registro, para o comerciante nunca ficar na dúvida se a informação foi salva.
 
-```
-Aquisição      ____ pessoas
-Ativação       ____ pessoas   (___%)
-Retenção       ____ pessoas   (___%)
-Receita        ____ pessoas   (___%)
-Recomendação   NPS ____
-```
+Esses elementos ajudam a transformar o sistema de uma ferramenta apenas funcional em algo que o comerciante realmente queira usar todos os dias.
 
-Depois, respondam:
+## MMP
 
-### Onde está a maior queda do funil?
+Essa versão é considerada um Minimum Marketable Product (MMP) porque reúne os elementos necessários para representar uma operação comercial:
 
-> Entre ____________ e ____________, perdemos ____%.
+* Funcionalidades essenciais de controle financeiro
 
-Essa resposta é o que vai alimentar a decisão da Etapa 5.
+* Público-alvo definido
 
-⚠️ Lembrem da aula 2: a etapa a consertar é a de **maior queda**, não a última.
+* Diferencial claro frente ao controle manual
 
-# 📋 ETAPA 4 — MONTAR O PAINEL
+* Modelo de preço
 
-O painel pode ser feito em **planilha** (Google Sheets, Excel), em ferramenta **no-code**, ou mesmo em uma **tabela no README** do repositório. O que importa é ele ser legível por alguém de fora.
+* Processo de contratação
 
-### Estrutura mínima do painel
+* Canais de divulgação
 
-| Métrica | Tipo | Valor atual | Período | Se piorar, vamos... |
-| --- | --- | --- | --- | --- |
-| Retenção semanal | produto | 31% | semana 2 | revisar o primeiro acesso |
-| NPS | produto | 35 | outubro | entrevistar detratores |
-| ... | ... | ... | ... | ... |
+* Experiência validada com usuários reais
 
-Abaixo da tabela, incluam:
+* Informações claras sobre o sistema e a empresa
 
-- as **contas** da Etapa 2;
-- o **funil** da Etapa 3;
-- uma linha dizendo se os dados são **reais ou simulados**.
+O sistema não é apenas um protótipo funcional. Foi planejado para ser oferecido e comercializado para comerciantes reais.
 
-📌 Coluna "Período" é obrigatória. Como vimos na aula 1, métrica sem período não permite comparação — e métrica que não se compara não serve para nada.
+## Validação
 
-# 🗳️ ETAPA 5 — A DECISÃO COLETIVA
+Para validar a loja, será feito um teste com pelo menos 2 pessoas externas à equipe.
 
-Esta é a etapa mais importante do projeto. Reservem **15 minutos** para ela.
+Os participantes receberão a seguinte orientação:
 
-Sigam o formato da reunião de métricas (aula 2):
+“Imagine que você encontrou esse sistema na internet e está pensando em assinar para controlar as finanças do seu comércio. Navegue e tente decidir se contrataria."
 
-```
-1. Alguém apresenta o painel                      (3 min)
-2. O time olha a maior queda do funil             (2 min)
-3. O time lista 2 opções de ação                  (4 min)
-4. Voto informado e escolha de UMA opção          (3 min)
-5. Registro da decisão                            (3 min)
-```
+Durante o teste, os participantes navegarão sem orientação sobre como utilizar o sistema.
 
-### Regra do voto informado
+Após a navegação, serão feitas perguntas sobre:
 
-**Ninguém vota antes de o painel estar na mesa.** Primeiro o número, depois a opinião.
+1. Entendimento do sistema
 
-### O trade-off
+2. Confiança
 
-Para as **duas** opções levantadas, preencham:
+3. Clareza do preço
 
-| Opção | O que ganhamos | O que abrimos mão |
-| --- | --- | --- |
-| A | | |
-| B | | |
+4. Processo de contratação
 
-### A ata da decisão
+5. Interesse pelo produto
 
-O registro final precisa ter exatamente estes quatro campos:
+6. Qualidade da apresentação
 
-```markdown
-## Decisão — <data>
+7. Elementos que chamaram atenção
 
-DECISÃO: o que vamos fazer
+8. Possíveis mudanças
 
-MOTIVO: o número que levou a isso
-        (ex.: "a ativação é de 36%, a maior queda do funil")
+9. Intenção de assinatura
 
-RESPONSÁVEL: quem conduz
+10. Motivos que poderiam impedir a contratação
 
-REVISÃO: quando vamos olhar esse número de novo
-```
+## Feedback
 
-E se alguém votou contra, registre também:
+*(A ser preenchido após a rodada de testes com os comerciantes.)*
 
-```
-DISCORDÂNCIA: <nome> acha que deveríamos ter escolhido B, porque ___.
-```
+## Melhorias
 
-📌 Isso não é formalidade. Como vimos na aula 2, decisão não registrada volta a ser discutida na semana seguinte — e discordância registrada vira aprendizado quando o número não melhora.
+*(A ser definida a partir dos problemas identificados nos testes, com pelo menos duas melhorias implementadas na loja.)*
 
-# 🐙 ETAPA 6 — ENTREGA NO GITHUB
+## Divulgação
 
-No **mesmo repositório do produto** usado nos projetos anteriores (ou um novo, se a equipe estiver usando o caminho alternativo), criem:
+Clean‑Financy quer usar vários canais para alcançar o público.
 
-```
-nome-do-produto/
-├── README.md
-└── metricas/
-    ├── painel.md          ← ou o link para a planilha
-    └── decisao.md         ← a ata da Etapa 5
-```
+### Instagram
 
-E abram **uma Issue** para a ação decidida na Etapa 5, com:
+Clean‑Financy vai usar o Instagram para:
 
-- o título sendo a ação;
-- no corpo, o número que motivou a decisão;
-- o responsável marcado.
+* Mostrar o sistema em uso
 
-# 🎯 ENTREGA DO PROJETO 3
+* Publicar textos sobre organização financeira para pequenos negócios
 
-Ao final, cada equipe deverá entregar:
+* Apresentar novidades e melhorias
 
-| # | Entregável | Onde |
-| --- | --- | --- |
-| 1 | 4 a 6 métricas escolhidas, com a frase "se piorar, vamos..." | `painel.md` |
-| 2 | NPS calculado, com no mínimo 10 respostas e a conta à mostra | `painel.md` |
-| 3 | Retenção e churn calculados, com as contas | `painel.md` |
-| 4 | Funil AARRR com números e a maior queda identificada | `painel.md` |
-| 5 | Painel organizado e legível (tabela ou planilha linkada) | `painel.md` |
-| 6 | Ata da decisão com os 4 campos | `decisao.md` |
-| 7 | Issue criada para a ação decidida | GitHub |
+### WhatsApp
 
-# ✅ CRITÉRIOS DE AVALIAÇÃO
+Clean‑Financy vai usar o WhatsApp para atender direto e apresentar o sistema a comerciantes da região, além de criar proximidade com associações comerciais locais.
 
-| Critério | O que é observado |
-| --- | --- |
-| Escolha das métricas | são acionáveis? têm produto **e** código? |
-| Cálculos | as contas estão corretas e visíveis? |
-| Funil | a maior queda foi identificada corretamente? |
-| Decisão | está ligada a um **número específico** do painel? |
-| Registro | a ata tem decisão, motivo, responsável e revisão? |
-| Participação | todos participaram da decisão da Etapa 5? |
+## Entrega
 
-⚠️ O erro que mais custa nota: uma decisão que não aponta nenhum número do painel. Se a justificativa for "achamos melhor", o projeto não cumpriu o objetivo — mesmo com o painel bonito.
+Como Clean‑Financy é um sistema, a entrega é digital: o comerciante recebe acesso à plataforma assim que a assinatura é confirmada, sem necessidade de envio físico.
 
-Boas métricas! 📈
+## Acesso à Loja
+
+LINK DA LOJA
+
+## Processo de Contratação
+
+O processo de contratação previsto é:
+
+**1. Cliente acessa a loja**
+
+**2. Cliente conhece os planos disponíveis**
+
+**3. Cliente escolhe o plano**
+
+**4. Cliente cadastra o negócio no sistema**
+
+**5. Cliente confirma o pagamento (quando aplicável)**
+
+**6. Cliente recebe acesso à plataforma**
+
+
+Projeto 3 — Painel de Métricas do Produto
+
+O objetivo desta etapa é acompanhar o desempenho da Clean-Financy por meio de métricas de produto e de código, identificar dificuldades na experiência dos usuários e tomar decisões coletivas com base nos resultados analisados.
+
+A Clean-Financy é um sistema de gestão financeira voltado para pequenos comércios, comerciantes autônomos e microempresas. Por isso, as métricas serão utilizadas para avaliar se os visitantes compreendem a proposta do sistema, conseguem iniciar sua utilização e demonstram interesse em continuar usando a plataforma.
+
+Métricas acompanhadas
+
+Categoria
+
+Indicadores
+
+Produto
+
+Taxa de ativação, retenção e NPS
+
+Código
+
+Commits realizados e bugs em aberto
+
+Cada indicador apresenta seu valor atual, o período analisado, a interpretação do resultado e uma ação definida pela equipe para responder a uma possível piora.
+
+Os indicadores de produto ajudam a compreender a experiência dos comerciantes durante o primeiro acesso e o uso contínuo da plataforma. Já os indicadores de código permitem acompanhar a evolução do desenvolvimento e identificar problemas que possam comprometer o funcionamento do sistema.
+
+Cálculos e análise
+
+O painel apresenta os cálculos e as interpretações dos seguintes indicadores:
+
+Taxa de ativação: percentual de visitantes que realizam uma ação importante na Clean-Financy, como concluir o cadastro e registrar a primeira movimentação financeira.
+
+Retenção: percentual dos usuários de uma mesma coorte que voltam a utilizar o sistema após o primeiro acesso.
+
+Churn: percentual dos usuários da mesma coorte que deixam de retornar durante o período de acompanhamento.
+
+NPS (Net Promoter Score): indicador de satisfação e disposição dos usuários para recomendar a Clean-Financy a outros comerciantes.
+
+Commits: registros de alterações realizadas no código do projeto, utilizados para acompanhar a atividade de desenvolvimento.
+
+Bugs em aberto: erros identificados que ainda precisam ser corrigidos, especialmente aqueles que podem prejudicar o cadastro, o registro de movimentações e a visualização do saldo.
+
+Funil AARRR: análise das etapas de aquisição, ativação, retenção, receita e recomendação para identificar em qual etapa os usuários apresentam maior dificuldade.
+
+Os valores, as fórmulas, as interpretações e as ações correspondentes estão documentados em metricas/painel.md.
+
+Observação: os valores utilizados como exemplo no painel são hipotéticos e servem para demonstrar os cálculos e orientar a tomada de decisão. Eles deverão ser substituídos por dados reais obtidos durante a validação da Clean-Financy com usuários externos e pelo acompanhamento do repositório.
+
+Decisão coletiva
+
+Após analisar o cenário hipotético de 20 visitantes, a equipe definiu como ação prioritária simplificar o cadastro e melhorar as orientações do primeiro acesso à Clean-Financy.
+
+A decisão foi motivada pela taxa estimada de ativação de 30%: dos 20 visitantes considerados no painel, apenas 6 chegaram à primeira movimentação financeira, enquanto 14 não foram ativados. Isso representa uma queda de 70% entre a aquisição e a ativação.
+
+A equipe priorizará a revisão dos campos de cadastro e a melhoria das orientações apresentadas no primeiro acesso. O objetivo é facilitar a entrada de novos usuários, reduzir as dúvidas iniciais e ajudar os comerciantes a registrar suas primeiras movimentações financeiras.
+
+Essa melhoria está alinhada à proposta de valor da Clean-Financy, que busca oferecer um sistema simples, prático e fácil de aprender, especialmente para comerciantes que não possuem conhecimento técnico ou muito tempo para administrar as finanças do negócio.
+
+A decisão não impede a correção de bugs críticos. Caso seja identificado algum erro que impeça o cadastro, o acesso ou o registro financeiro, sua correção deverá receber prioridade.
+
+O registro formal da decisão, incluindo a justificativa, o responsável e a data de revisão, está disponível em metricas/decisao.md.
+
+Arquivos do projeto
+
+Painel de métricas — painel.md: indicadores de produto e código, cálculos de ativação, retenção, churn e NPS, funil AARRR, análise dos resultados e ações de melhoria.
+
+Decisão coletiva — decisao.md: registro da decisão da equipe, justificativa numérica, responsável e data de revisão.
+
+Issue da ação prioritária: acompanhamento das tarefas para simplificar o cadastro e melhorar as orientações do primeiro acesso. O link da issue deverá ser adicionado após sua criação no GitHub.
+
+Tecnologias utilizadas
+
+Plataforma de desenvolvimento: Lovable.
+
+Sistema: Clean-Financy, voltado à gestão financeira de pequenos comércios.
+
+Versionamento e colaboração: Git e GitHub, caso estejam sendo utilizados no repositório do projeto.
+
+Documentação: arquivos Markdown (.md) para registrar as métricas, os cálculos e as decisões coletivas.
+
+Equipe
+
+Integrante
+
+Responsabilidade no projeto Clean-Financy
+
+João Mateus
+
+Coordenador de Mercado
+
+João Paulo
+
+Coordenador de Marketing
+
+Luis Guilherme
+
+Garantia de Qualidade
+
+João Emanoel
+
+Designer
+
+Keirryson Raffael
+
+Desenvolvedor Full Stack
+
+Organização da equipe
+
+As responsabilidades foram distribuídas para permitir a execução das atividades em paralelo, mantendo a participação coletiva nas decisões e na definição das prioridades do produto.
+
+Função
+
+Responsabilidade
+
+Métricas de produto
+
+Analisar ativação, retenção, churn e NPS, considerando a experiência dos comerciantes.
+
+Métricas de código
+
+Verificar commits, pull requests (PRs), bugs em aberto e a evolução do desenvolvimento.
+
+Painel
+
+Organizar os indicadores, os valores, os cálculos e a interpretação dos resultados.
+
+Documentação
+
+Registrar o funil AARRR, as decisões coletivas e as ações de melhoria.
+
+Validação
+
+Acompanhar os testes com pessoas externas à equipe e registrar os feedbacks recebidos.
+
+A divisão de responsabilidades orienta a execução das tarefas, enquanto as decisões sobre as prioridades da Clean-Financy são discutidas e tomadas coletivamente.
+
+Atividade: Projeto 3 — Painel de Métricas do Produto.
+
+Status do projeto
+
+Em desenvolvimento.
+
+A equipe utiliza os indicadores de produto, os resultados da validação com usuários externos e o acompanhamento do código para orientar as melhorias da Clean-Financy.
+
+A prioridade inicial é simplificar o cadastro e melhorar as orientações do primeiro acesso. Em seguida, os resultados serão reavaliados para verificar se as mudanças contribuíram para aumentar a ativação dos usuários e facilitar o uso do sistema.
+
+O acompanhamento contínuo das métricas permitirá identificar dificuldades, priorizar correções e evoluir a plataforma de acordo com as necessidades dos pequenos comerciantes.
+
+## Conclusão
+
+Clean‑Financy foi criado com o objetivo de evoluir de uma sprint de pesquisa sobre finanças de pequenos negócios para uma solução com características de produto comercial.
+
+O projeto aplica os conceitos de MVP, MLP e MMP, mostrando a evolução do sistema funcional até uma versão pensada para ser apresentada ao mercado — Clean‑Financy não é uma loja de produtos físicos, mas um serviço de gestão financeira acessível para quem mais precisa dele: o pequeno comerciante.
+Clean-Financy
+
+Clean-Financy — Gestão financeira simples para quem faz o comércio acontecer.
