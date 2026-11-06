@@ -9,23 +9,35 @@ const pedidos = [
 ]
 
 router.get("/pedidos", (req, res) => {
-    const status = req.query
-    const valorMin = Number(req.query)
+    const status = (req.query.status)
+    const valorMin = Number(req.query.valorMin)
+    
+    if(status && valorMin ) {
+        return res.json(pedidos.filter(p => p.status == status && p.valor >= valorMin))
+    }
 
     if(status) {
-        res.json(pedidos.filter(p => p.status == "preparando"))
+        return res.json(pedidos.filter(p => p.status == status))
     }
 
     if(valorMin) {
-        res.json(pedidos.filter(p => p.valor >= 28))
+        return res.json(pedidos.filter(p => p.valor >= valorMin))
     }
 
-    if(status && valorMin) {
-        res.json(pedidos.filter(p => p.status == "preparando" && p.valor >= 28))
-    }
-    
     res.json(pedidos)
 })
+
+router.get("/pedidos/resumo", (req, res) => {
+    const resumo = {
+        total: pedidos.length,
+        valorTotal: pedidos.reduce((valorT, pedido) => {
+            return valorT + pedido.valor
+        }, 0)
+    }
+
+    res.json(resumo)
+})
+
 
 router.get("/pedidos/:id", (req, res) => {
     const id = Number(req.params.id)
@@ -38,9 +50,18 @@ router.get("/pedidos/:id", (req, res) => {
     res.json(pedido)
 })
 
-router.post("/pedidos", validarPedido, (req, res) => {
-    pedidos.push(req.body)
-    res.status(201).json({ mensagem: "Registro de pedido criado"})
+router.post("/pedidos", validarPedido, (req, res) => {  
+    const novoPedido = {
+        id: pedidos.length + 1,
+        cliente: req.body.cliente,
+        item: req.body.item,
+        valor: req.body.valor,
+        status: "recebido"
+
+    }
+
+    pedidos.push(novoPedido)
+     return res.status(201).json({ mensagem: "Registro de pedido criado"})
 })
 
 module.exports = router

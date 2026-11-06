@@ -1,0 +1,18 @@
+info:
+  name: RF01 pedidos filtro
+  type: http
+
+http:
+  method: GET
+  url: http://localhost:3000?status=preparando
+  params:
+    - name: status
+      value: preparando
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

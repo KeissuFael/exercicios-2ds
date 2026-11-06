@@ -1,0 +1,17 @@
+info:
+  name: RF03 post
+  type: http
+
+http:
+  method: POST
+  url: http://localhost:3000/pedidos
+  body:
+    type: json
+    data: '{ "cliente" : "Diego", "item" : "X-Burguer", "valor" : 25 }'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
